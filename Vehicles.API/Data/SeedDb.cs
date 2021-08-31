@@ -26,9 +26,10 @@ namespace Vehicles.API.Data
             await CheckDocumentTypesAync();
             await CheckProceduresAync();
             await CheckRolesAsync();
-            await CheckUserAsync("1010", "Esteban", "Hincapie", "esteban@yomail.com", "3003003000", "Calle 10 # 20 - 30", UserType.User);
-            await CheckUserAsync("2020", "Luis", "Salazar", "luis@yomail.com", "3003003000", "Calle 10 # 20 - 30", UserType.Admin);
-            await CheckUserAsync("3030", "Leidy", "Bedoya", "leidy@yomail.com", "3003003000", "Calle 10 # 20 - 30", UserType.User);
+            await CheckUserAsync("1010", "Luis", "Salazar", "luis@yopmail.com", "300 300 3000", "Calle 10 # 20 - 30", UserType.Admin);
+            await CheckUserAsync("2020", "Esteban", "Hincapie", "esteban@yopmail.com", "300 300 3000", "Calle 10 # 20 - 30", UserType.User);
+            await CheckUserAsync("3030", "Leidy", "Bedoya", "leidy@yopmail.com", "300 300 3000", "Calle 10 # 20 - 30", UserType.User);
+            await CheckUserAsync("4040", "Daniela", "Marquez", "daniela@yopmail.com", "333 300 3000", "Calle 10 # 20 - 30", UserType.Admin);
         }
 
         private async Task CheckUserAsync(string document, string firstName, string lastName, string email, string phoneNumber, string address, UserType userType)

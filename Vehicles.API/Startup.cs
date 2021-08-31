@@ -26,8 +26,6 @@ namespace Vehicles.API
 
             services.AddIdentity<User, IdentityRole>(x =>
             {
-                x.Tokens.AuthenticatorTokenProvider = TokenOptions.DefaultAuthenticatorProvider;
-                x.SignIn.RequireConfirmedEmail = true;
                 x.User.RequireUniqueEmail = true;
                 x.Password.RequireDigit = false;
                 x.Password.RequiredUniqueChars = 0;
@@ -35,7 +33,6 @@ namespace Vehicles.API
                 x.Password.RequireNonAlphanumeric = false;
                 x.Password.RequireUppercase = false;
             })
-                //.AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<DataContext>();
             /*
             services.AddAuthentication()

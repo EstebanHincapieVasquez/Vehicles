@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Vehicles.API.Data;
 using Vehicles.API.Data.Entities;
+using Vehicles.API.Models;
 
 namespace Vehicles.API.Helpers
 {
@@ -14,14 +15,14 @@ namespace Vehicles.API.Helpers
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly DataContext _context;
-        //private readonly SignInManager<User> _signInManager;
+        private readonly SignInManager<User> _signInManager;
 
-        public UserHelper(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, DataContext context/*, SignInManager<User> signInManager*/)
+        public UserHelper(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, DataContext context, SignInManager<User> signInManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _context = context;
-            //_signInManager = signInManager;
+            _signInManager = signInManager;
         }
 
         public async Task<IdentityResult> AddUserAsync(User user, string password)
@@ -120,7 +121,7 @@ namespace Vehicles.API.Helpers
         {
             return await _userManager.IsInRoleAsync(user, roleName);
         }
-        /*
+        
         public async Task<SignInResult> LoginAsync(LoginViewModel model)
         {
             return await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, false);
@@ -130,7 +131,7 @@ namespace Vehicles.API.Helpers
         {
             await _signInManager.SignOutAsync();
         }
-
+        /*
         public async Task<IdentityResult> UpdateUserAsync(User user)
         {
             User currentUser = await GetUserAsync(user.Email);
