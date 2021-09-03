@@ -2,13 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 using Vehicles.Common.Enums;
 
 namespace Vehicles.API.Data.Entities
 {
-    public class User : IdentityUser    
+    public class User : IdentityUser
     {
         [Display(Name = "Nombres")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
@@ -36,21 +34,20 @@ namespace Vehicles.API.Data.Entities
         [Display(Name = "Foto")]
         public Guid ImageId { get; set; }
 
-        //TODO: Fix the image path
+        [Display(Name = "Foto")]
         public string ImageFullPath => ImageId == Guid.Empty
             ? $"https://localhost:44397/images/noimage.png"
-            : $"https://vehicleszulu.blob.core.windows.net/users/{ImageId}";
-        
+            : $"https://vehiclesesteban.blob.core.windows.net/users/{ImageId}";
+
         [Display(Name = "Tipo de usuario")]
         public UserType UserType { get; set; }
 
         [Display(Name = "Usuario")]
         public string FullName => $"{FirstName} {LastName}";
-        
+
         public ICollection<Vehicle> Vehicles { get; set; }
-        /*
+
         [Display(Name = "# Vehículos")]
         public int VehiclesCount => Vehicles == null ? 0 : Vehicles.Count;
-        */
     }
 }
