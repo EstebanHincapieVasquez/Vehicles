@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Threading.Tasks;
 using Vehicles.API.Data;
 using Vehicles.API.Data.Entities;
@@ -77,12 +78,12 @@ namespace Vehicles.API.Helpers
         {
             return await _userManager.ConfirmEmailAsync(user, token);
         }
-
+        */
         public async Task<IdentityResult> DeleteUserAsync(User user)
         {
             return await _userManager.DeleteAsync(user);
         }
-
+        /*
         public async Task<string> GenerateEmailConfirmationTokenAsync(User user)
         {
             return await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -92,16 +93,13 @@ namespace Vehicles.API.Helpers
         {
             return await _context.Users
                 .Include(x => x.DocumentType)
-                /*
                 .Include(x => x.Vehicles)
                 .ThenInclude(x => x.VehiclePhotos)
                 .Include(x => x.Vehicles)
                 .ThenInclude(x => x.Histories)
                 .ThenInclude(x => x.Details)
-                */
                 .FirstOrDefaultAsync(x => x.Email == email);
         }
-        /*
         public async Task<User> GetUserAsync(Guid id)
         {
             return await _context.Users
@@ -113,7 +111,7 @@ namespace Vehicles.API.Helpers
                 .ThenInclude(x => x.Details)
                 .FirstOrDefaultAsync(x => x.Id == id.ToString());
         }
-        */
+
         public async Task<bool> IsUserInRoleAsync(User user, string roleName)
         {
             return await _userManager.IsInRoleAsync(user, roleName);
@@ -128,7 +126,7 @@ namespace Vehicles.API.Helpers
         {
             await _signInManager.SignOutAsync();
         }
-        /*
+        
         public async Task<IdentityResult> UpdateUserAsync(User user)
         {
             User currentUser = await GetUserAsync(user.Email);
@@ -141,7 +139,7 @@ namespace Vehicles.API.Helpers
             currentUser.PhoneNumber = user.PhoneNumber;
             return await _userManager.UpdateAsync(currentUser);
         }
-
+        /*
         public async Task<string> GeneratePasswordResetTokenAsync(User user)
         {
             return await _userManager.GeneratePasswordResetTokenAsync(user);
