@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Vehicles.API.Data;
 using Vehicles.API.Data.Entities;
 using Vehicles.API.Models;
+using Vehicles.Common.Enums;
 
 namespace Vehicles.API.Helpers
 {
@@ -27,7 +28,7 @@ namespace Vehicles.API.Helpers
         {
             return await _userManager.CreateAsync(user, password);
         }
-        /*
+
         public async Task<User> AddUserAsync(AddUserViewModel model, Guid imageId, UserType userType)
         {
             User user = new User
@@ -54,7 +55,7 @@ namespace Vehicles.API.Helpers
             await AddUserToRoleAsync(newUser, user.UserType.ToString());
             return newUser;
         }
-        */
+
         public async Task AddUserToRoleAsync(User user, string roleName)
         {
             await _userManager.AddToRoleAsync(user, roleName);
@@ -126,7 +127,7 @@ namespace Vehicles.API.Helpers
         {
             await _signInManager.SignOutAsync();
         }
-        
+
         public async Task<IdentityResult> UpdateUserAsync(User user)
         {
             User currentUser = await GetUserAsync(user.Email);
