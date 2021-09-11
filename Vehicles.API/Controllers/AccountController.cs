@@ -233,12 +233,12 @@ namespace Vehicles.API.Controllers
             return View();
         }
 
-        /*
+        
         public IActionResult RecoverPassword()
         {
             return View();
         }
-
+        
         [HttpPost]
         public async Task<IActionResult> RecoverPassword(RecoverPasswordViewModel model)
         {
@@ -259,19 +259,19 @@ namespace Vehicles.API.Controllers
                 _mailHelper.SendMail(model.Email, "Vehicles - Reseteo de contraseña", $"<h1>Vehicles - Reseteo de contraseña</h1>" +
                     $"Para establecer una nueva contraseña haga clic en el siguiente enlace:</br></br>" +
                     $"<a href = \"{link}\">Cambio de Contraseña</a>");
-                ViewBag.Message = "Las instrucciones para el cambio de contraseña han sido enviadas a su email.";
+                ViewBag.Message = "Las instrucciones para el cambio de contraseña han sido enviadas a su correo electrónico.";
                 return View();
 
             }
 
             return View(model);
         }
-
+        
         public IActionResult ResetPassword(string token)
         {
             return View();
         }
-
+        
         [HttpPost]
         public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
         {
@@ -281,17 +281,17 @@ namespace Vehicles.API.Controllers
                 IdentityResult result = await _userHelper.ResetPasswordAsync(user, model.Token, model.Password);
                 if (result.Succeeded)
                 {
-                    ViewBag.Message = "Contaseña cambiada.";
+                    ViewBag.Message = "Contaseña actualizada exitosamente.";
                     return View();
                 }
 
-                ViewBag.Message = "Error cambiando la contraseña.";
+                ViewBag.Message = "Error al cambiar la contraseña.";
                 return View(model);
             }
 
             ViewBag.Message = "Usuario no encontrado.";
             return View(model);
         }
-        */
+        
     }
 }
