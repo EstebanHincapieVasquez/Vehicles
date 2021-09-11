@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -120,8 +121,7 @@ namespace Vehicles.API.Controllers
             model.DocumentTypes = _combosHelper.GetComboDocumentTypes();
             return View(model);
         }
-        /*
-
+        
         public async Task<IActionResult> ChangeUser()
         {
             User user = await _userHelper.GetUserAsync(User.Identity.Name);
@@ -207,6 +207,7 @@ namespace Vehicles.API.Controllers
             return View(model);
         }
 
+        /*
         public async Task<IActionResult> ConfirmEmail(string userId, string token)
         {
             if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(token))
